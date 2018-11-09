@@ -137,6 +137,9 @@ public class BaseTest {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",element);
     }
 
+    /**
+     * generating random number, where length is amount of numbers in result`s number
+     */
     public String randomNumber (int length){
         StringBuilder temp = new StringBuilder("1");
         for (int i = 1; i < length; i++){
@@ -145,6 +148,36 @@ public class BaseTest {
         int result = Integer.parseInt(temp.toString());
         return String.valueOf((int)(result + (result*9) * Math.random()));
     }
+
+    /**
+     * Generating random mobile number
+     */
+    public String randomMobileNumber(){
+        String prefix = "";
+        switch (Integer.parseInt(randomNumber(1))) {
+            case 1:  prefix = "095";
+                break;
+            case 2:  prefix = "050";
+                break;
+            case 3:  prefix = "063";
+                break;
+            case 4:  prefix = "066";
+                break;
+            case 5:  prefix = "067";
+                break;
+            case 6:  prefix = "073";
+                break;
+            case 7:  prefix = "068";
+                break;
+            case 8:  prefix = "091";
+                break;
+            case 9:  prefix = "093";
+                break;
+        }
+
+        return prefix + randomNumber(7);
+    }
+
 
     public boolean randomZeroOrOne(){
         if (Integer.parseInt(randomNumber(1))/5 == 1) return true;
